@@ -2,7 +2,10 @@ exports.config = {
   specs: ['search-spec.js'],
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
-  sauceSeleniumAddress: 'localhost:4445/wd/hub'
+  sauceSeleniumAddress: 'localhost:4445/wd/hub',
+  capabilities: {
+     'browserName': 'chrome'
+   }
 };
 
 // function connection_url() {
@@ -12,3 +15,15 @@ exports.config = {
 //     return "http://localhost:4444/wd/hub"
 //   }
 // }
+
+
+
+ // // Spec patterns are relative to the current working directly when
+ // // protractor is called.
+ // specs: ['example_spec.js'],
+
+ // // Options to be passed to Jasmine-node.
+ // jasmineNodeOpts: {
+ //   showColors: true,
+ //   defaultTimeoutInterval: 30000
+ // }
