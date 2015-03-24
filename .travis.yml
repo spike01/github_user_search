@@ -3,11 +3,12 @@ node_js:
   - "0.12"
 env:
   global:
-    - secure: fWom5ia39QRXI/ZmM3SLDPLNdBGUOCTVMhd6adXIyq+e3vI33qIv6RqEurrfxZ6O1QBSC93PXnHkpzZUagi6TKJlUwUqPRcdjMmSt5+lRhKdaSERCowXF4k/7RaHYjT24/QizaYSqpcM0Kw+YtbGjtz7COGozht44Uquj0L4N64=
-    - secure: WLYHJtwAgUXlIN9ELF8VWLIaDNzRdFS3BmG2Ih0PRh7ZWjHqTOmUYakb1zoO+cJeucG8XGCCSu9GAFIIwWJuxIbwzFUJWo7h0qSe+YgPymlCEn7ogBmWjs4QwYRovrcIf3rmgxxFBRYRP+ZslAwEF7u52vc+4mx4bKDbfq1WN+E=
-    - WDADDRESS=http://ondemand.saucelabs.com/wd/hub
+      - WDADDRESS=http://ondemand.saucelabs.com/wd/hub
 addons:
-  sauce_connect: true
+  sauce_connect:
+    username: "dpbergquist"
+    access_key:
+      secure: "Nzt7p3o34Pce9MeC8JMuJKKHN5DdtGLejYfD6z+vgs+MIe2c+nBVbP/taw5eor6pzRIrHH9tABiXLr/YNv7sR1FQ7jOBimqSaBgSQdwiB12V2OZr2IhGqHc09oTcxpwIOPNrTkhJa9JCB9bpPoTY5WnUFKrvTBt6L4QrustsgVY="
 before_script:
   - ./node_modules/.bin/bower install
   - npm start &
