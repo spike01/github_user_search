@@ -3,9 +3,9 @@ node_js:
   - "0.12"
 env:
   global:
-      secure: "i4CctvcE/OAR+s2YudpU+yXWmJGZqdVt2hmQElH93EHjzE85qAR/zO7ow/bKlFhevujWxoVDwXfsDrWWj92UpcOprCxsflc3k5UE6e8f6JLe/tVBi0Ieq/i7nYWlWa4uni5hepDM8kYFlv2ADEz2Yn9b8YpQYjJZnSK5Baa6RGU="
       - WDADDRESS=http://ondemand.saucelabs.com/wd/hub
       - SAUCE_USERNAME=dpbergquist
+      - secure: "i4CctvcE/OAR+s2YudpU+yXWmJGZqdVt2hmQElH93EHjzE85qAR/zO7ow/bKlFhevujWxoVDwXfsDrWWj92UpcOprCxsflc3k5UE6e8f6JLe/tVBi0Ieq/i7nYWlWa4uni5hepDM8kYFlv2ADEz2Yn9b8YpQYjJZnSK5Baa6RGU="
 addons:
   sauce_connect: true
 before_script:
