@@ -4,9 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start test/karma.conf.js --single-run --browsers PhantomJS",
-    "e2e": "protractor e2e/conf.js",
-    "start": "node app.js"
+    "postinstall": "./node_modules/.bin/bower install",
+    "test": "./node_modules/karma/bin/karma start test/karma.conf.js --browsers PhantomJS --single-run",
+    "e2e-test": "protractor e2e/conf.js",
+    "prestart": "npm install",
+    "pretest":"npm install",
+    "start": "node app.js",
+    "preupdate-webdriver":"npm install",
+    "update-webdriver": "webdriver-manager update"
   },
   "author": "",
   "license": "ISC",

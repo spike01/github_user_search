@@ -1,31 +1,27 @@
 describe('GitUserSearchController', function() {
+  var ctrl, httpBackend;
+  
   beforeEach(module('GitUserSearch'));
 
-  var scope, ctrl;
-
-  beforeEach(inject(function($rootScope, $controller) {
-    scope = $rootScope.$new();
-    ctrl = $controller('GitUserSearchController', {
-        $scope: scope
-    });
+  beforeEach(inject(function($controller) {
+    ctrl = $controller('GitUserSearchController');
   }));
 
+
   it('should initialise with an empty search result and term', function() {
-    expect(scope.searchResult).toBeUndefined();
-    expect(scope.searchTerm).toBeUndefined();
+    expect(ctrl.searchResult).toBeUndefined();
+    expect(ctrl.searchTerm).toBeUndefined();
   });
 
   describe('when searching for a user', function() {
 
-    var httpBackend;
-
     beforeEach(inject(function($httpBackend) {
       httpBackend = $httpBackend
       httpBackend
-        .when("GET", "https://api.github.com/search/users?access_params=0b9fb92ffdf5b9503051de3b6cacbeb504383163&q=hello")
-        .respond({
-          items: items
-        });
+        .expectGET("https://api.github.com/search/users?q=hello&access_params=0b9fb92ffdf5b9503051de3b6cacbeb504383163")
+        .respond(
+          { items: items }
+        );
     }));
     
     var items = [
@@ -42,12 +38,16 @@ describe('GitUserSearchController', function() {
     ];
 
    it('should display search results', function() {
-      scope.searchTerm = 'hello';
-      scope.doSearch();
-      scope.$apply();
+      ctrl.searchTerm = 'hello';
+      ctrl.doSearch();
       httpBackend.flush();
-      expect(scope.searchResult.items).toEqual(items);
+      expect(ctrl.searchResult).toEqual(items);
     });
+
+   afterEach(function() {
+    httpBackend.verifyNoOutstandingExpectation();
+    httpBackend.verifyNoOutstandingRequest();
+   })
 
   });
 
