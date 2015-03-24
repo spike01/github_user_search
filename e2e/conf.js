@@ -1,7 +1,8 @@
 exports.config = {
   specs: ['search-spec.js'],
   sauceUser: process.env.SAUCE_USERNAME,
-  sauceKey: process.env.SAUCE_ACCESS_KEY
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
+  sauceSeleniumAddress: 'localhost:4445/wd/hub'
 };
 
 // function connection_url() {
