@@ -1,4 +1,4 @@
 exports.config = {
-  seleniumAddress: 'http://localhost:' + process.env.WDPORT +  '/wd/hub' || 'http://localhost:4444/wd/hub',
+  seleniumAddress: process.env.WDADDRESS || 'http://localhost:4444/wd/hub',
   specs: ['search-spec.js']
 };
