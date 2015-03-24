@@ -1,6 +1,7 @@
 describe('Github user search', function() {
 
   describe('angularjs homepage', function() {
+
    it('should greet the named user', function() {
      browser.get('http://www.angularjs.org');
 
@@ -37,13 +38,15 @@ describe('Github user search', function() {
      });
    });
   });
-  
-  
-  beforeEach(function() {
-    browser.get('http://localhost:3000')
-  });
 
-  it('has a title', function() {
-    expect(browser.getTitle()).toEqual('Github user search')
+  describe('ourtests', function(){
+
+    beforeEach(function() {
+      browser.get('http://localhost:3000')
+    });
+
+    it('has a title', function() {
+      expect(browser.getTitle()).toEqual('Github user search')
+    });
   });
 });
