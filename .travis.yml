@@ -13,5 +13,8 @@ before_script:
   - npm start &
   - sleep 3
 script: 
+  - echo HHHHHHHHHHHHHHHH
+  - echo $SAUCE_USERNAME
+  - echo $SAUCE_ACCESS_KEY
   - npm test
   - npm run e2e
