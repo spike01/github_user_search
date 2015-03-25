@@ -5,7 +5,9 @@ exports.config = {
   sauceSeleniumAddress: 'localhost:4445/wd/hub',
   capabilities: {
      'browserName': 'chrome'
-   }
+  },
+  allScriptsTimeout: 30000,
+  rootElement: 'html'
 };
 
 // function connection_url() {
