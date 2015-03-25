@@ -1,17 +1,30 @@
-language: node_js
-node_js:
-  - "0.12"
-env:
-  global:
-    - WDADDRESS=ondemand.saucelabs.com/wd/hub
-    - secure: dJpXV9NLT78Ij1T0Qwe4fmXtl7lYLdXvkryGzAXLczAnkS+guP11XhnXDonX/juyqJYpQvinTj7P/OPN47GfB4DNXvkFTPLUvHvO+2AQCpOQlyNN/GI7KvkUjDeHxBY4EqQ5GrLzsxGdas4K9OA3F1caGMe6gJnE05R5FU+/IOg=
-    - secure: sK1k+hpXsG1+5b9kiuNCSzBZYh4VwF2lf3kdZnianX7Ef2GsRvpvGtWNIJRjanE8jy1vK4hm/Y8xZOi/KiS/dtBDMRU4JSL/VsLdhMYhODwVPFdrfoeZfU19YPqk86Qc0+3GagiStux31PuW+2jzDvh8gfrD8KhSEeU1wDb3rqo=
-addons:
-  sauce_connect: true
-before_script:
-  - ./node_modules/.bin/bower install
-  - npm start &
-  - sleep 3
+# language: node_js
+# node_js:
+#   - "0.12"
+# env:
+#   global:
+#     - WDADDRESS=ondemand.saucelabs.com/wd/hub
+#     - secure: dJpXV9NLT78Ij1T0Qwe4fmXtl7lYLdXvkryGzAXLczAnkS+guP11XhnXDonX/juyqJYpQvinTj7P/OPN47GfB4DNXvkFTPLUvHvO+2AQCpOQlyNN/GI7KvkUjDeHxBY4EqQ5GrLzsxGdas4K9OA3F1caGMe6gJnE05R5FU+/IOg=
+#     - secure: sK1k+hpXsG1+5b9kiuNCSzBZYh4VwF2lf3kdZnianX7Ef2GsRvpvGtWNIJRjanE8jy1vK4hm/Y8xZOi/KiS/dtBDMRU4JSL/VsLdhMYhODwVPFdrfoeZfU19YPqk86Qc0+3GagiStux31PuW+2jzDvh8gfrD8KhSEeU1wDb3rqo=
+# addons:
+#   sauce_connect: true
+# before_script:
+#   - ./node_modules/.bin/bower install
+#   - npm start &
+#   - sleep 3
 script: 
   - npm test
   - npm run e2e
+
+language: node_js
+node_js:
+  - "0.10"
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm start > /dev/null &
+  - npm run update-webdriver
+  - sleep 1 # give server time to start
+# script:
+#   - node_modules/.bin/karma start karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox
+#   - node_modules/.bin/protractor e2e-tests/protractor.conf.js --browser=firefox
