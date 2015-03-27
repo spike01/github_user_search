@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
     "test": "./node_modules/karma/bin/karma start test/karma.conf.js --single-run --browsers PhantomJS",
-    "e2e": "protractor e2e/conf.js",
+    "e2e": "./node_modules/.bin/protractor e2e/conf.js",
     "start": "node app.js"
   },
   "author": "",
