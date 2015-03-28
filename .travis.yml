@@ -1,6 +1,6 @@
 script: 
   - npm test
-  - npm run e2e
+  - npm run e2e-test
 language: node_js
 node_js:
   - "0.10"
@@ -10,6 +10,3 @@ before_script:
   - npm start > /dev/null &
   - npm run update-webdriver
   - sleep 3 # give server time to start
-script:
-  - npm test
-  - npm e2e
