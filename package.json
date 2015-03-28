@@ -10,7 +10,7 @@
     "prestart": "npm install",
     "pretest":"npm install",
     "start": "node app.js",
-    "preupdate-webdriver":"npm install"
+    "preupdate-webdriver":"npm install",
     "update-webdriver": "webdriver-manager update"
   },
   "author": "",
