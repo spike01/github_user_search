@@ -1,18 +1,15 @@
 describe('GitUserSearchController', function() {
   beforeEach(module('GitUserSearch'));
 
-  var scope, ctrl;
+  var ctrl;
 
-  beforeEach(inject(function($rootScope, $controller) {
-    scope = $rootScope.$new();
-    ctrl = $controller('GitUserSearchController', {
-        $scope: scope
-    });
+  beforeEach(inject(function($controller) {
+    ctrl = $controller('GitUserSearchController');
   }));
 
   it('should initialise with an empty search result and term', function() {
-    expect(scope.searchResult).toBeUndefined();
-    expect(scope.searchTerm).toBeUndefined();
+    expect(ctrl.searchResult).toBeUndefined();
+    expect(ctrl.searchTerm).toBeUndefined();
   });
 
   describe('when searching for a user', function() {
@@ -42,11 +39,10 @@ describe('GitUserSearchController', function() {
     ];
 
    it('should display search results', function() {
-      scope.searchTerm = 'hello';
-      scope.doSearch();
-      scope.$apply();
+      ctrl.searchTerm = 'hello';
+      ctrl.doSearch();
       httpBackend.flush();
-      expect(scope.searchResult.items).toEqual(items);
+      expect(ctrl.searchResult.items).toEqual(items);
     });
 
   });
