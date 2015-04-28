@@ -1,11 +1,12 @@
 describe('GitUserSearchController', function() {
+  var ctrl, httpBackend;
+  
   beforeEach(module('GitUserSearch'));
-
-  var ctrl;
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('GitUserSearchController');
   }));
+
 
   it('should initialise with an empty search result and term', function() {
     expect(ctrl.searchResult).toBeUndefined();
@@ -14,15 +15,14 @@ describe('GitUserSearchController', function() {
 
   describe('when searching for a user', function() {
 
-    var searchFactory;
-
-    beforeEach(inject(function(SearchFactory) {
-      spyOn(SearchFactory, 'search');
-
-      spyOn(SearchFactory, 'list').andReturn('yo');
-
-      searchFactory = SearchFactory;
-    }))
+    beforeEach(inject(function($httpBackend) {
+      httpBackend = $httpBackend
+      httpBackend
+        .expectGET("https://api.github.com/search/users?q=hello&access_params=0b9fb92ffdf5b9503051de3b6cacbeb504383163")
+        .respond(
+          { items: items }
+        );
+    }));
     
     var items = [
       {
@@ -40,9 +40,14 @@ describe('GitUserSearchController', function() {
    it('should display search results', function() {
       ctrl.searchTerm = 'hello';
       ctrl.doSearch();
-      expect(searchFactory.search).toHaveBeenCalled();
-      // expect(ctrl.searchResult).toEqual(items);
+      httpBackend.flush();
+      expect(ctrl.searchResult).toEqual(items);
     });
+
+   afterEach(function() {
+    httpBackend.verifyNoOutstandingExpectation();
+    httpBackend.verifyNoOutstandingRequest();
+   })
 
   });
 

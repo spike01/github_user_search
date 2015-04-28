@@ -1,18 +1,11 @@
-githubUserSearch.factory('SearchFactory', ['$resource', function($resource) {
-  var users = {items: []};
+githubUserSearch.factory('SearchFactory', ['$http', function($http) {
 
-  var searchResource = $resource('https://api.github.com/search/users');
+  var queryUrl = 'https://api.github.com/search/users';
+  var accessParams = '&access_params=0b9fb92ffdf5b9503051de3b6cacbeb504383163';
 
   return {
     search: function(searchTerm) {
-      users = searchResource.get({
-        q: searchTerm,
-        access_params: '0b9fb92ffdf5b9503051de3b6cacbeb504383163'
-      });
-    },
-    list: function() {
-      return users.items;
+      return $http.get(queryUrl + '?q=' + searchTerm + accessParams)  
     }
-
   };
 }]);
