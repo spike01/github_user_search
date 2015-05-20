@@ -1,4 +1,4 @@
-script: 
+script:
   - npm test
   - node_modules/.bin/protractor e2e/conf.js --browser=firefox
 language: node_js
