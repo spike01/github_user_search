@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
-    "test": "./node_modules/karma/bin/karma start test/karma.conf.js --browsers PhantomJS",
+    "test": "./node_modules/karma/bin/karma start test/karma.conf.js --browsers PhantomJS --single-run",
     "e2e-test": "protractor e2e/conf.js",
     "prestart": "npm install",
     "pretest":"npm install",
